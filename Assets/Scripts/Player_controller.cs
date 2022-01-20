@@ -12,7 +12,8 @@ public class Player_controller : MonoBehaviour
         //player input
         float speed = Input.GetAxisRaw("Horizontal");
         float jump = Input.GetAxisRaw("Jump");
-        bool iscrouching=Input.GetKey(KeyCode.S);
+        bool isCrouching = Input.GetKey(KeyCode.S);
+        bool isStaffAttaking = Input.GetKey(KeyCode.E);
 
         //animating run, idle animation
         animator.SetFloat("speed",Mathf.Abs(speed));
@@ -38,13 +39,23 @@ public class Player_controller : MonoBehaviour
         }
 
         //Crouching
-        if (iscrouching)
+        if (isCrouching)
         {
             animator.SetBool("iscrouching",true);
         }
         else
         {
            animator.SetBool("iscrouching",false); 
+        }
+
+        //staff attacking
+        if (isStaffAttaking)
+        {
+            animator.SetBool("IsStaffAttaking",true);
+        }
+        else
+        {
+           animator.SetBool("IsStaffAttaking",false); 
         }
 
     }
