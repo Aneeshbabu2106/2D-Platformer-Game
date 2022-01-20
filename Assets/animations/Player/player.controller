@@ -436,13 +436,13 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3908692557157755946}
-    m_Position: {x: 120, y: 160, z: 0}
+    m_Position: {x: 120, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1716186227153344169}
-    m_Position: {x: 470, y: 160, z: 0}
+    m_Position: {x: 420, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4447894521530477179}
-    m_Position: {x: 460, y: 20, z: 0}
+    m_Position: {x: 420, y: -40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2626782112854214869}
@@ -613,20 +613,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: iscrouching
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: isJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: crouching
-    m_Type: 9
+  - m_Name: iscrouching
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -866,8 +860,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: speed
+  - m_ConditionMode: 1
+    m_ConditionEvent: crouching
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: iscrouching
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1716186227153344169}
@@ -882,4 +879,4 @@ AnimatorStateTransition:
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 0
+  m_CanTransitionToSelf: 1

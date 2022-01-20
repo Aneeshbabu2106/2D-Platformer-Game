@@ -7,7 +7,9 @@ public class Player_controller : MonoBehaviour
     public Animator animator;
     void Update()
     {
-        float speed =Input.GetAxisRaw("Horizontal");
+        float speed = Input.GetAxisRaw("Horizontal");
+
+        float jump = Input.GetAxisRaw("Jump");
         animator.SetFloat("speed",Mathf.Abs(speed));
         
 
@@ -19,6 +21,17 @@ public class Player_controller : MonoBehaviour
         {
             scale.x = Mathf.Abs(scale.x);
         }
+        if (jump > 0)
+        {
+            animator.SetBool("isJumping",true);
+        }
+        else if (jump ==0 )
+        {
+           animator.SetBool("isJumping",false); 
+        }
+
+
+
         transform.localScale=scale;
 
     }
