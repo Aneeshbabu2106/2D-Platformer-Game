@@ -6,14 +6,18 @@ public class Player_controller : MonoBehaviour
 {
     public Animator animator;
     void Update()
-    {
-        float speed = Input.GetAxisRaw("Horizontal");
-
-        float jump = Input.GetAxisRaw("Jump");
-        animator.SetFloat("speed",Mathf.Abs(speed));
-        
-
+    {   
         Vector3 scale = transform.localScale;
+
+        //player input
+        float speed = Input.GetAxisRaw("Horizontal");
+        float jump = Input.GetAxisRaw("Jump");
+        bool iscrouching=Input.GetKey(KeyCode.S);
+
+        //animating run, idle animation
+        animator.SetFloat("speed",Mathf.Abs(speed));
+
+        //swiching sides
         if (speed < 0)
         {
             scale.x = -1f * Mathf.Abs(scale.x);
@@ -21,6 +25,9 @@ public class Player_controller : MonoBehaviour
         {
             scale.x = Mathf.Abs(scale.x);
         }
+        transform.localScale=scale;
+
+        //jumping mechanics
         if (jump > 0)
         {
             animator.SetBool("isJumping",true);
@@ -30,9 +37,15 @@ public class Player_controller : MonoBehaviour
            animator.SetBool("isJumping",false); 
         }
 
-
-
-        transform.localScale=scale;
+        //Crouching
+        if (iscrouching)
+        {
+            animator.SetBool("iscrouching",true);
+        }
+        else
+        {
+           animator.SetBool("iscrouching",false); 
+        }
 
     }
 }
