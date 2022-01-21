@@ -10,10 +10,13 @@ public class Player_controller : MonoBehaviour
         Vector3 scale = transform.localScale;
 
         //player input
-        float speed = Input.GetAxisRaw("Horizontal");
+        float speed = Input.GetAxis("Horizontal");
         float jump = Input.GetAxisRaw("Vertical");
         bool isCrouching = Input.GetKey(KeyCode.LeftControl);
         bool isStaffAttaking = Input.GetKey(KeyCode.E);
+        bool isShooting = Input.GetKey(KeyCode.Space);
+        bool isPushing = Input.GetKey(KeyCode.Tab);
+
 
         //animating run, idle animation
         animator.SetFloat("speed",Mathf.Abs(speed));
@@ -41,11 +44,11 @@ public class Player_controller : MonoBehaviour
         //Crouching
         if (isCrouching)
         {
-            animator.SetBool("iscrouching",true);
+            animator.SetBool("isCrouching",true);
         }
         else
         {
-           animator.SetBool("iscrouching",false); 
+           animator.SetBool("isCrouching",false); 
         }
 
         //staff attacking
@@ -57,6 +60,27 @@ public class Player_controller : MonoBehaviour
         {
            animator.SetBool("IsStaffAttaking",false); 
         }
+
+        //shooting
+        if (isShooting)
+        {
+            animator.SetBool("isShooting",true);
+        }
+        else
+        {
+           animator.SetBool("isShooting",false); 
+        }
+
+        //pushing
+        if (isPushing)
+        {
+            animator.SetBool("isPushing",true);
+        }
+        else
+        {
+           animator.SetBool("isPushing",false); 
+        }
+
 
     }
 }
