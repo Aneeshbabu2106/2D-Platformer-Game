@@ -11,8 +11,8 @@ public class Player_controller : MonoBehaviour
 
         //player input
         float speed = Input.GetAxisRaw("Horizontal");
-        float jump = Input.GetAxisRaw("Jump");
-        bool isCrouching = Input.GetKey(KeyCode.S);
+        float jump = Input.GetAxisRaw("Vertical");
+        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
         bool isStaffAttaking = Input.GetKey(KeyCode.E);
 
         //animating run, idle animation
