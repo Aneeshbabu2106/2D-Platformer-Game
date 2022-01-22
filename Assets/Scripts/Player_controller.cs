@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player_controller : MonoBehaviour
 {
     public Animator animator;
+    public float speedForce=4f;
     void Update()
     {   
-        Vector3 scale = transform.localScale;
-
+        
         //player input
         float speed = Input.GetAxis("Horizontal");
         float jump = Input.GetAxisRaw("Vertical");
@@ -16,12 +16,27 @@ public class Player_controller : MonoBehaviour
         bool isStaffAttaking = Input.GetKey(KeyCode.E);
         bool isShooting = Input.GetKey(KeyCode.Space);
         bool isPushing = Input.GetKey(KeyCode.Tab);
+        PlayAnimation(speed, jump, isCrouching, isStaffAttaking, isShooting,isPushing);
+        MoveCharacter(speed);
 
+    }
 
+    private void MoveCharacter(float speed)
+    {
+        Vector3 position = transform.position;
+        position.x += speed * speedForce * Time.deltaTime;
+        transform.position = position;
+
+    }
+
+    private void PlayAnimation(float speed,float jump, bool isCrouching,bool isStaffAttaking, bool isShooting,bool isPushing)
+    {
+        
         //animating run, idle animation
         animator.SetFloat("speed",Mathf.Abs(speed));
 
-        //swiching sides
+        //flipping
+        Vector3 scale = transform.localScale;
         if (speed < 0)
         {
             scale.x = -1f * Mathf.Abs(scale.x);
@@ -80,7 +95,7 @@ public class Player_controller : MonoBehaviour
         {
            animator.SetBool("isPushing",false); 
         }
-
-
     }
+
+
 }
