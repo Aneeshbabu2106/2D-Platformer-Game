@@ -177,7 +177,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.3898525
+  orthographic size: 4.537842
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -207,36 +207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &609911387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 609911388}
-  m_Layer: 7
-  m_Name: groundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &609911388
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609911387}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1976850596}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321469529
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +220,7 @@ GameObject:
   - component: {fileID: 1321469530}
   m_Layer: 6
   m_Name: platform
-  m_TagString: Untagged
+  m_TagString: _platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,8 +310,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321469529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: -1.68, z: -3.5968}
-  m_LocalScale: {x: 10.147835, y: 2.7381046, z: 1}
+  m_LocalPosition: {x: -2.2883, y: -1.68, z: -3.5968}
+  m_LocalScale: {x: 31.742569, y: 2.7381046, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -412,20 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1976850597}
-  groundCheck: {fileID: 609911388}
-  whatIsLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   speedForce: 4
-  jumpForce: 200
-  groundCheckRadius: 0.00000001
-  isGrounded: 0
---- !u!4 &1976850596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7399730258209956899, guid: cdfa90bfd126cc14ab0695691e6bcf47,
-    type: 3}
-  m_PrefabInstance: {fileID: 582311477435552887}
-  m_PrefabAsset: {fileID: 0}
+  jumpForce: 1500
+  isGrounded: 1
 --- !u!95 &1976850597 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 786452655545659752, guid: cdfa90bfd126cc14ab0695691e6bcf47,
@@ -518,6 +477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508363789409669228, guid: cdfa90bfd126cc14ab0695691e6bcf47,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdfa90bfd126cc14ab0695691e6bcf47, type: 3}

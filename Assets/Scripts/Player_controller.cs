@@ -1,43 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_controller : MonoBehaviour
 {
     public Animator animator;
-    public Transform groundCheck;
-    private Rigidbody2D rgBd2D;
-    public LayerMask whatIsLayerMask;
+    private Rigidbody2D playerRigidBody;
 
-    public float speedForce;
-    public float jumpForce;
-    public float groundCheckRadius;
+    [SerializeField] private float speedForce = 0.0f;
+    [SerializeField] private float jumpForce = 0.0f;
 
-    public bool isGrounded = false;
+    private float jump;
+    private float speed;
 
-
-
-
+    private bool isCrouching = false;
+    private bool isStaffAttacking = false;
+    private  bool isShooting = false;
+    private bool isPushing = false;
+    private bool isGrounded = false;
+    
     void Awake() {
-        rgBd2D = gameObject.GetComponent<Rigidbody2D>();
+        playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
+
     void Update()
-    {   
-        
+    {       
         //player input
-        float speed = Input.GetAxis("Horizontal");
-        float jump = Input.GetAxis("Vertical");
-        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
-        bool isStaffAttaking = Input.GetKey(KeyCode.E);
-        bool isShooting = Input.GetKey(KeyCode.Space);
-        bool isPushing = Input.GetKey(KeyCode.Tab);
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,whatIsLayerMask);
-        PlayAnimation(speed, jump, isCrouching, isStaffAttaking, isShooting,isPushing,isGrounded);
-        MoveCharacter(speed,jump,isGrounded);
-
+        speed = Input.GetAxis("Horizontal");
+        jump = Input.GetAxis("Vertical");
+        isCrouching = Input.GetKey(KeyCode.LeftControl);
+        isStaffAttacking = Input.GetKey(KeyCode.E);
+        isShooting = Input.GetKey(KeyCode.Space);
+        isPushing = Input.GetKey(KeyCode.Tab);
     }
 
-    private void MoveCharacter(float speed,float jump,bool isGrounded)
+    void FixedUpdate() {
+
+        PlayAnimation();
+        MoveCharacter(); 
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("_platform"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void MoveCharacter()
     {
         //player horizontal movement
         Vector3 position = transform.position;
@@ -47,15 +55,14 @@ public class Player_controller : MonoBehaviour
         //player vertical movement
         if (jump > 0 && isGrounded)
         {
-            rgBd2D.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
+            playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
             Debug.Log(jumpForce);
+            isGrounded = false;
         }
-
     }
 
-    private void PlayAnimation(float speed,float jump, bool isCrouching,bool isStaffAttaking, bool isShooting,bool isPushing, bool isGrounded)
-    {
-        
+    private void PlayAnimation ()
+    { 
         //animating run, idle animation
         animator.SetFloat("speed",Mathf.Abs(speed));
 
@@ -70,16 +77,6 @@ public class Player_controller : MonoBehaviour
         }
         transform.localScale=scale;
 
-        //jumping mechanics
-        if (jump > 0 && isGrounded)
-        {
-            animator.SetBool("isJumping",true);
-        }
-        else if (jump == 0 )
-        {
-           animator.SetBool("isJumping",false); 
-        }
-
         //Crouching
         if (isCrouching)
         {
@@ -91,13 +88,13 @@ public class Player_controller : MonoBehaviour
         }
 
         //staff attacking
-        if (isStaffAttaking)
+        if (isStaffAttacking)
         {
-            animator.SetBool("IsStaffAttaking",true);
+            animator.SetBool("isStaffAttacking",true);
         }
         else
         {
-           animator.SetBool("IsStaffAttaking",false); 
+           animator.SetBool("isStaffAttacking",false); 
         }
 
         //shooting
@@ -119,7 +116,15 @@ public class Player_controller : MonoBehaviour
         {
            animator.SetBool("isPushing",false); 
         }
+
+        //jumping mechanics
+        if (jump > 0 && isGrounded)
+        {
+            animator.SetBool("isJumping",true);  
+        }
+        else 
+        {
+           animator.SetBool("isJumping",false);
+        } 
     }
-
-
 }
