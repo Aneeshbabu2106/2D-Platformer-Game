@@ -15,7 +15,7 @@ public class Player_controller : MonoBehaviour
     private bool isStaffAttacking = false;
     private  bool isShooting = false;
     private bool isPushing = false;
-    private bool isGrounded = false;
+    [SerializeField] private bool isGrounded = false;
     
     void Awake() {
         playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
