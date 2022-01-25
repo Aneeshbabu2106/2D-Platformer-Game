@@ -5,31 +5,55 @@ using UnityEngine;
 public class Player_controller : MonoBehaviour
 {
     public Animator animator;
-    public float speedForce=4f;
+    public Transform groundCheck;
+    private Rigidbody2D rgBd2D;
+    public LayerMask whatIsLayerMask;
+
+    public float speedForce;
+    public float jumpForce;
+    public float groundCheckRadius;
+
+    public bool isGrounded = false;
+
+
+
+
+    void Awake() {
+        rgBd2D = gameObject.GetComponent<Rigidbody2D>();
+    }
     void Update()
     {   
         
         //player input
         float speed = Input.GetAxis("Horizontal");
-        float jump = Input.GetAxisRaw("Vertical");
+        float jump = Input.GetAxis("Vertical");
         bool isCrouching = Input.GetKey(KeyCode.LeftControl);
         bool isStaffAttaking = Input.GetKey(KeyCode.E);
         bool isShooting = Input.GetKey(KeyCode.Space);
         bool isPushing = Input.GetKey(KeyCode.Tab);
-        PlayAnimation(speed, jump, isCrouching, isStaffAttaking, isShooting,isPushing);
-        MoveCharacter(speed);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,whatIsLayerMask);
+        PlayAnimation(speed, jump, isCrouching, isStaffAttaking, isShooting,isPushing,isGrounded);
+        MoveCharacter(speed,jump,isGrounded);
 
     }
 
-    private void MoveCharacter(float speed)
+    private void MoveCharacter(float speed,float jump,bool isGrounded)
     {
+        //player horizontal movement
         Vector3 position = transform.position;
         position.x += speed * speedForce * Time.deltaTime;
         transform.position = position;
 
+        //player vertical movement
+        if (jump > 0 && isGrounded)
+        {
+            rgBd2D.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
+            Debug.Log(jumpForce);
+        }
+
     }
 
-    private void PlayAnimation(float speed,float jump, bool isCrouching,bool isStaffAttaking, bool isShooting,bool isPushing)
+    private void PlayAnimation(float speed,float jump, bool isCrouching,bool isStaffAttaking, bool isShooting,bool isPushing, bool isGrounded)
     {
         
         //animating run, idle animation
@@ -47,11 +71,11 @@ public class Player_controller : MonoBehaviour
         transform.localScale=scale;
 
         //jumping mechanics
-        if (jump > 0)
+        if (jump > 0 && isGrounded)
         {
             animator.SetBool("isJumping",true);
         }
-        else if (jump ==0 )
+        else if (jump == 0 )
         {
            animator.SetBool("isJumping",false); 
         }
