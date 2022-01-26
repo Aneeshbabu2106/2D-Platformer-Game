@@ -547,7 +547,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHurting
@@ -636,6 +636,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isPushing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isHurting
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8586668000236485127}
   m_Solo: 0
@@ -721,7 +727,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHurting
@@ -1239,7 +1245,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IsStaffAttacking
+  - m_Name: isStaffAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1327,7 +1333,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5245916831134106500}
@@ -1464,7 +1470,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHurting
@@ -1597,7 +1603,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHurting
@@ -1634,7 +1640,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
@@ -1746,7 +1752,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isJumping
@@ -1805,7 +1811,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5189358668902760667}
@@ -2061,7 +2067,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isCrouching
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHurting
@@ -2203,7 +2209,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IsStaffAttacking
+    m_ConditionEvent: isStaffAttacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
