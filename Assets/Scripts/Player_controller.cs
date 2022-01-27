@@ -63,7 +63,11 @@ public class Player_controller : MonoBehaviour
         animator.SetFloat("speed",Mathf.Abs(horizontalInput));
         animator.SetFloat("verticalSpeed",playerRigidBody.velocity.y);
         animator.SetBool("isGrounded", isGrounded);
-
+        animator.SetBool("isCrouching",isCrouching);            //Crouching
+        animator.SetBool("isStaffAttacking",isStaffAttacking);  //staff attacking
+        animator.SetBool("isShooting",isShooting);              //shooting      
+        animator.SetBool("isPushing",isPushing);                //pushing
+        
         //flipping
         Vector3 scale = transform.localScale;
         if (horizontalInput < 0){
@@ -72,34 +76,6 @@ public class Player_controller : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale=scale;
-
-        //Crouching
-        if (isCrouching){
-            animator.SetBool("isCrouching",true);
-        }else{
-            animator.SetBool("isCrouching",false); 
-        }
-
-        //staff attacking
-        if (isStaffAttacking){
-            animator.SetBool("isStaffAttacking",true);
-        }else{
-            animator.SetBool("isStaffAttacking",false); 
-        }
-
-        //shooting
-        if (isShooting){
-            animator.SetBool("isShooting",true);
-        }else{
-            animator.SetBool("isShooting",false); 
-        }
-
-        //pushing
-        if (isPushing){
-            animator.SetBool("isPushing",true);
-        }else{
-            animator.SetBool("isPushing",false); 
-        }
 
         //jumping 
         if (verticalInput > 0 && isGrounded){
