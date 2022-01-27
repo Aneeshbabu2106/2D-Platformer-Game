@@ -105,7 +105,7 @@ public class Player_controller : MonoBehaviour
         if (verticalInput > 0 && isGrounded){
             animator.SetBool("isJumping",true);  
         }else {
-           animator.SetBool("isJumping",false);
+            animator.SetBool("isJumping",false);
         } 
     }
 }
