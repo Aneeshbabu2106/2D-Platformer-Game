@@ -19,6 +19,7 @@ public class Player_controller : MonoBehaviour
     
     
     void Awake() {
+        
         playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -46,6 +47,14 @@ public class Player_controller : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.CompareTag("_platform"))
+        {
+            isGrounded = false;
+        }
+        
+    }
+
     private void MoveCharacter()
     {
         //player horizontal movement
@@ -58,7 +67,6 @@ public class Player_controller : MonoBehaviour
         {
             playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
             Debug.Log(jumpForce);
-            isGrounded = false;
         }
     }
 
@@ -66,6 +74,8 @@ public class Player_controller : MonoBehaviour
     { 
         //animating run, idle animation
         animator.SetFloat("speed",Mathf.Abs(horizontalInput));
+        animator.SetFloat("verticalSpeed",playerRigidBody.velocity.y);
+        animator.SetBool("isGrounded", isGrounded);
 
         //flipping
         Vector3 scale = transform.localScale;
