@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player_controller : MonoBehaviour
 {
     public Animator animator;
+    public GroundCheck groundCheckObject;
     private Rigidbody2D playerRigidBody;
 
     private float verticalInput;
@@ -10,8 +11,8 @@ public class Player_controller : MonoBehaviour
 
     [SerializeField] private float speedForce = 0.0f;
     [SerializeField] private float jumpForce = 0.0f;
-    [SerializeField] private bool isGrounded = false;
 
+    private bool isGrounded = false;
     private bool isCrouching = false;
     private bool isStaffAttacking = false;
     private  bool isShooting = false;
@@ -19,7 +20,7 @@ public class Player_controller : MonoBehaviour
     
     
     void Awake() {
-        
+        //getting components
         playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -36,26 +37,12 @@ public class Player_controller : MonoBehaviour
 
     void FixedUpdate() {
 
-        PlayAnimation();
-        MoveCharacter(); 
+        PlayerAnimations();
+        PlayerMovements();
+        isGrounded=groundCheckObject.isGrounded;
     }
     
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag("_platform"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.CompareTag("_platform"))
-        {
-            isGrounded = false;
-        }
-        
-    }
-
-    private void MoveCharacter()
+    private void PlayerMovements()
     {
         //player horizontal movement
         Vector3 position = transform.position;
@@ -70,71 +57,54 @@ public class Player_controller : MonoBehaviour
         }
     }
 
-    private void PlayAnimation ()
+    private void PlayerAnimations()
     { 
-        //animating run, idle animation
+        //setting animator parameters
         animator.SetFloat("speed",Mathf.Abs(horizontalInput));
         animator.SetFloat("verticalSpeed",playerRigidBody.velocity.y);
         animator.SetBool("isGrounded", isGrounded);
 
         //flipping
         Vector3 scale = transform.localScale;
-        if (horizontalInput < 0)
-        {
+        if (horizontalInput < 0){
             scale.x = -1f * Mathf.Abs(scale.x);
-        }else if(horizontalInput > 0)
-        {
+        }else if(horizontalInput > 0){
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale=scale;
 
         //Crouching
-        if (isCrouching)
-        {
+        if (isCrouching){
             animator.SetBool("isCrouching",true);
-        }
-        else
-        {
-           animator.SetBool("isCrouching",false); 
+        }else{
+            animator.SetBool("isCrouching",false); 
         }
 
         //staff attacking
-        if (isStaffAttacking)
-        {
+        if (isStaffAttacking){
             animator.SetBool("isStaffAttacking",true);
-        }
-        else
-        {
-           animator.SetBool("isStaffAttacking",false); 
+        }else{
+            animator.SetBool("isStaffAttacking",false); 
         }
 
         //shooting
-        if (isShooting)
-        {
+        if (isShooting){
             animator.SetBool("isShooting",true);
-        }
-        else
-        {
-           animator.SetBool("isShooting",false); 
+        }else{
+            animator.SetBool("isShooting",false); 
         }
 
         //pushing
-        if (isPushing)
-        {
+        if (isPushing){
             animator.SetBool("isPushing",true);
-        }
-        else
-        {
-           animator.SetBool("isPushing",false); 
+        }else{
+            animator.SetBool("isPushing",false); 
         }
 
-        //jumping mechanics
-        if (verticalInput > 0 && isGrounded)
-        {
+        //jumping 
+        if (verticalInput > 0 && isGrounded){
             animator.SetBool("isJumping",true);  
-        }
-        else 
-        {
+        }else {
            animator.SetBool("isJumping",false);
         } 
     }
