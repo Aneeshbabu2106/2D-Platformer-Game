@@ -4,6 +4,7 @@ public class Player_controller : MonoBehaviour
 {
     public Animator animator;
     public GroundCheck groundCheckObject;
+    public FallDeath fallDeathObject;
     private Rigidbody2D playerRigidBody;
 
     private float verticalInput;
@@ -67,6 +68,7 @@ public class Player_controller : MonoBehaviour
         animator.SetBool("isStaffAttacking",isStaffAttacking);         //staff attacking
         animator.SetBool("isShooting",isShooting);                     //shooting      
         animator.SetBool("isPushing",isPushing);                       //pushing
+        animator.SetBool("IsDied",fallDeathObject.isDead);             //died
         
         //flipping
         Vector3 scale = transform.localScale;
