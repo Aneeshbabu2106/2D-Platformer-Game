@@ -53,7 +53,7 @@ public class Player_controller : MonoBehaviour
         if (verticalInput > 0 && isGrounded && !isPushing && !isStaffAttacking)
         {
             playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
-            Debug.Log(jumpForce);
+            //Debug.Log(jumpForce);
         }
     }
 
@@ -63,10 +63,10 @@ public class Player_controller : MonoBehaviour
         animator.SetFloat("speed",Mathf.Abs(horizontalInput));
         animator.SetFloat("verticalSpeed",playerRigidBody.velocity.y);
         animator.SetBool("isGrounded", isGrounded);
-        animator.SetBool("isCrouching",isCrouching);            //Crouching
-        animator.SetBool("isStaffAttacking",isStaffAttacking);  //staff attacking
-        animator.SetBool("isShooting",isShooting);              //shooting      
-        animator.SetBool("isPushing",isPushing);                //pushing
+        animator.SetBool("isCrouching",isCrouching);                   //Crouching
+        animator.SetBool("isStaffAttacking",isStaffAttacking);         //staff attacking
+        animator.SetBool("isShooting",isShooting);                     //shooting      
+        animator.SetBool("isPushing",isPushing);                       //pushing
         
         //flipping
         Vector3 scale = transform.localScale;
