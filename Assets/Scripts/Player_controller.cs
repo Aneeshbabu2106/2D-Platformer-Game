@@ -4,6 +4,7 @@ public class Player_controller : MonoBehaviour
 {
     public Animator animator;
     public GroundCheck groundCheckObject;
+    public ScoreController scoreControllerObject;
     public FallDeath fallDeathObject;
     private Rigidbody2D playerRigidBody;
 
@@ -87,7 +88,6 @@ public class Player_controller : MonoBehaviour
         } 
     }
     public void PickUp(){
-        Debug.Log("picked key");
-
+        scoreControllerObject.IncreaseKeys(1);
     }
 }
