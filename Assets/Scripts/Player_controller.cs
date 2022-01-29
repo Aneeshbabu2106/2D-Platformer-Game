@@ -9,6 +9,7 @@ public class Player_controller : MonoBehaviour
 
     private float verticalInput;
     private float horizontalInput;
+    private int Score;
 
     [SerializeField] private float speedForce = 0.0f;
     [SerializeField] private float jumpForce = 0.0f;
@@ -18,7 +19,7 @@ public class Player_controller : MonoBehaviour
     private bool isStaffAttacking = false;
     private  bool isShooting = false;
     private bool isPushing = false;
-    
+    public int check=0;
     
     void Awake() {
         //getting components
@@ -29,7 +30,7 @@ public class Player_controller : MonoBehaviour
     {       
         //player input
         horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical");
         isCrouching = Input.GetKey(KeyCode.LeftControl);
         isStaffAttacking = Input.GetKey(KeyCode.E);
         isShooting = Input.GetKey(KeyCode.Space);
@@ -51,10 +52,9 @@ public class Player_controller : MonoBehaviour
         transform.position = position;
 
         //player vertical movement
-        if (verticalInput > 0 && isGrounded && !isPushing && !isStaffAttacking)
-        {
+        if (verticalInput > 0 && isGrounded && !isPushing && !isStaffAttacking){
             playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
-            //Debug.Log(jumpForce);
+            Debug.Log(check++);
         }
     }
 
@@ -85,5 +85,9 @@ public class Player_controller : MonoBehaviour
         }else {
             animator.SetBool("isJumping",false);
         } 
+    }
+    public void PickUp(){
+        Debug.Log("picked key");
+
     }
 }
