@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_controller : MonoBehaviour
 {
@@ -86,6 +87,15 @@ public class Player_controller : MonoBehaviour
         }else {
             animator.SetBool("isJumping",false);
         } 
+    }
+    public void EnemyAttack()
+    {
+        animator.SetBool("IsDied",true);
+        RefreshScene();
+    }
+    void RefreshScene()
+    {
+        SceneManager.LoadScene(1);
     }
     public void PickUp(){
         scoreControllerObject.IncreaseKeys(1);
