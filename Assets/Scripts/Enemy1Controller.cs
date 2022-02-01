@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Enemy1Controller : MonoBehaviour
 {
-    Player_controller PCObj;
+    public bool isHurting = false;
+    Player_controller playerControllerObj;
   private void OnCollisionEnter2D(Collision2D other) {
-      if(other.gameObject.GetComponent<Player_controller>() != null)
+      if(other.gameObject.GetComponent<Player_controller>() != null)//checking player
       {
-          PCObj = other.gameObject.GetComponent<Player_controller>();
-          PCObj.EnemyAttack();
+          playerControllerObj = other.gameObject.GetComponent<Player_controller>();
+          playerControllerObj.EnemyAttack();
+          isHurting = true;
       }
+  }
+  private void OnCollisionExit2D(Collision2D other) {
+      if(other.gameObject.GetComponent<Player_controller>() != null)//checking player
+      {
+          isHurting = false;
+      }
+      
   }
 }
