@@ -328,6 +328,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7020378, y: 2.9822345}
   m_EdgeRadius: 0
+--- !u!114 &301883778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4137174965973853958, guid: 5c42ee233e83b8440827541b1696a21d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402027665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d862a05df4565004bbcfb2f8b5ba8117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &309236610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4070,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1402027665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4137174965973853960, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: leftBound
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853960, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853960, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: rightBound
+      value: 12.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853962, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137174965973853965, guid: 5c42ee233e83b8440827541b1696a21d,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c42ee233e83b8440827541b1696a21d, type: 3}
 --- !u!114 &1564910395 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7032220442394142119, guid: 66ed1a36cad5f834784844f69f64b376,
@@ -4435,6 +4531,11 @@ PrefabInstance:
       propertyPath: fallDeathObject
       value: 
       objectReference: {fileID: 831278709}
+    - target: {fileID: 2522612810118977687, guid: a2b1f122bb0355145846dc3081f6834c,
+        type: 3}
+      propertyPath: enemy1ControllerObj
+      value: 
+      objectReference: {fileID: 301883778}
     - target: {fileID: 2522612810118977687, guid: a2b1f122bb0355145846dc3081f6834c,
         type: 3}
       propertyPath: scoreControllerObject

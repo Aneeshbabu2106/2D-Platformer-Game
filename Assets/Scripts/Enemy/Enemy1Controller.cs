@@ -19,6 +19,5 @@ public class Enemy1Controller : MonoBehaviour
       {
           isHurting = false;
       }
-      
   }
 }
