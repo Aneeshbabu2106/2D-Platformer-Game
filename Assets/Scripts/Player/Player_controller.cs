@@ -9,6 +9,7 @@ public class Player_controller : MonoBehaviour
     private CapsuleCollider2D colli2D;
     public GroundCheck groundCheckObject;
     public ScoreController scoreControllerObject;
+    public GameOverController gameOverCtrlObj;
     public FallDeath fallDeathObject;
     public Enemy1Controller enemy1ControllerObj;
 
@@ -126,9 +127,9 @@ public class Player_controller : MonoBehaviour
         }
         if(health <= 0){
             isDead = true;
+            //remove detection by enemy;
             animator.SetBool("isDied",isDead);                             //died
             StartCoroutine(DelayAction());
-            
         }
          
     }
@@ -145,16 +146,14 @@ public class Player_controller : MonoBehaviour
         Debug.Log(health);
     }
     public IEnumerator DelayAction(){
-        //Debug.Log(Time.time);
-        yield return new WaitForSeconds(2f);
-        RefreshScene();
-        //Debug.Log(Time.time);
+
+        yield return new WaitForSeconds(1f);
+        gameOverCtrlObj.PlayerDied();
+        isDead = false;
+        this.enabled=false;
     }
 
-    void RefreshScene()
-    {
-        SceneManager.LoadScene(1);
-    }
+    
     public void PickUp(){
         scoreControllerObject.IncreaseKeys(1);
     }

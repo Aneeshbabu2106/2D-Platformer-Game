@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemyPetrolling : MonoBehaviour
 {
-    [SerializeField] private float leftBound;
-    [SerializeField] private float rightBound;
+    public Transform leftBound;
+    public Transform rightBound;
+    private float xLeftBound;
+    private float xRightBound;
     [SerializeField] private float moveSpeed;
     [SerializeField] private bool isfacingLeft = true;
+    private void Start() {
+        {
+            xLeftBound = leftBound.position.x;
+            xRightBound = rightBound.position.x;
+        }
+    }
 
     private void Update() {
         Vector3 scale = transform.localScale;
         Vector3 position = transform.position;
-        if (transform.position.x > leftBound && isfacingLeft)          //going left
+        if (transform.position.x > xLeftBound && isfacingLeft)          //going left
         { 
             position.x -= moveSpeed * Time.deltaTime;
         }
@@ -22,7 +30,7 @@ public class EnemyPetrolling : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
             
         }
-        else if (transform.position.x < rightBound && !isfacingLeft)  //going right
+        else if (transform.position.x < xRightBound && !isfacingLeft)  //going right
         {
             position.x += moveSpeed * Time.deltaTime;
         }
