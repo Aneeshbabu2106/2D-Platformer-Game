@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Player_controller : MonoBehaviour
@@ -41,7 +40,6 @@ public class Player_controller : MonoBehaviour
         playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         colli2D = gameObject.GetComponent<CapsuleCollider2D>();
-
     }
 
     void Update()
@@ -93,7 +91,6 @@ public class Player_controller : MonoBehaviour
         //player vertical movement
         if (verticalInput > 0 && isGrounded && !isPushing && !isStaffAttacking && !isDead){
             playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
-            //Debug.Log(check++);
         }
     }
 
@@ -143,7 +140,6 @@ public class Player_controller : MonoBehaviour
             position.x += hurtMoveForce;
         }
         transform.position = position;
-        Debug.Log(health);
     }
     public IEnumerator DelayAction(){
 
@@ -153,7 +149,6 @@ public class Player_controller : MonoBehaviour
         this.enabled=false;
     }
 
-    
     public void PickUp(){
         scoreControllerObject.IncreaseKeys(1);
     }
