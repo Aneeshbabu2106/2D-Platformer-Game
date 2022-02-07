@@ -18,12 +18,11 @@ public class GameOverController : MonoBehaviour
     }
     void RefreshScene()
     {
-        //Debug.Log("hello");
-        SceneManager.LoadScene(1);
+        Scene scene=SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
     }
     void firstScene()
     {
-        //Debug.Log("hello");
         SceneManager.LoadScene(0);
     }
 }

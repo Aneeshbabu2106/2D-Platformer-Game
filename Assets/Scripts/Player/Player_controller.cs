@@ -64,6 +64,7 @@ public class Player_controller : MonoBehaviour
     }
 
     void FixedUpdate() {
+        
         PlayerMovements();
         isGrounded = groundCheckObject.isGrounded;
         
@@ -117,7 +118,6 @@ public class Player_controller : MonoBehaviour
     public void EnemyAttack()
     {
         health -= EnemyDamage;
-        Debug.Log(health);
         if(health > 0){
             //isHurting
             HurtMovement();

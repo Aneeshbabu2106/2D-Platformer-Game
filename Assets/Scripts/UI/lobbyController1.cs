@@ -4,6 +4,7 @@ using UnityEngine;
 public class lobbyController1 : MonoBehaviour
 {
     public Button startButton;
+    public GameObject levelSelection;
     public Button optionButton;
     public Button exitButton;
 
@@ -14,7 +15,7 @@ public class lobbyController1 : MonoBehaviour
     }
     void StartScene()
     {
-        SceneManager.LoadScene(1);
+        levelSelection.SetActive(true);
     }
     void OptionScene()
     {
