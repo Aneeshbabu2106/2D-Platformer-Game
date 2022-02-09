@@ -8,7 +8,8 @@ public class EnemyPetrolling : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Collider2D wallColli2D;
     private Rigidbody2D enemyRB;
-    private bool mustPetrol = true;
+    public bool isfacingleft = false;
+    public bool mustPetrol = true;
     private bool mustTurn = false;
 
     private void Start()
@@ -32,14 +33,14 @@ public class EnemyPetrolling : MonoBehaviour
             Flip();
         }
         enemyRB.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime,enemyRB.velocity.y);
-        Debug.Log("called");
         
     }
-    void Flip()
+    public void Flip()
     {   
         mustPetrol = false;
         transform.localScale = new Vector2(transform.localScale.x * -1,transform.localScale.y); //flip enemy
-        walkSpeed *= -1;                                                                        //flip movement direction
+        walkSpeed *= -1;
+        isfacingleft = !isfacingleft;                                                                       //flip movement direction
         mustPetrol = true;                                                                      
     }
     private void OnDrawGizmos() {

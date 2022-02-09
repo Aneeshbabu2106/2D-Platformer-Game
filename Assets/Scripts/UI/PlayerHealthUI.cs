@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    Player_controller PC;
+    PlayerDamage PD;
     private float health;
     public int numOfHearts;
     public Image[] hearts;
     public Sprite fullHeart;
     private void Awake() {
-        PC = GetComponent<Player_controller>();
+        PD = GetComponent<PlayerDamage>();
     }
     void Update()
     {
-        health = PC.health;
+        health = PD.health;
         if (health > numOfHearts)
         {
             health = numOfHearts;

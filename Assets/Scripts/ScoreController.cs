@@ -22,5 +22,4 @@ public class ScoreController : MonoBehaviour
     {
        keyText.text ="Keys: "+ Keys; 
     }
-
 }

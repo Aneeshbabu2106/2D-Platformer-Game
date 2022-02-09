@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &504285787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 504285788}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &504285788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504285787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6471992599892978983}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2213924920033744759
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6471992599892978983}
   - component: {fileID: 2522612810118977687}
+  - component: {fileID: 51853096343319210}
   - component: {fileID: 4480906942669248583}
   - component: {fileID: 539775279}
   - component: {fileID: 5734686533263631938}
@@ -119,6 +150,7 @@ Transform:
   m_Children:
   - {fileID: 1349136270423118826}
   - {fileID: 6471992598800835857}
+  - {fileID: 504285788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,14 +168,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckObject: {fileID: 6471992598800835871}
   scoreControllerObject: {fileID: 0}
-  gameOverCtrlObj: {fileID: 0}
   fallDeathObject: {fileID: 0}
   enemy1ControllerObj: {fileID: 0}
   speedForce: 7
   jumpForce: 3000
   health: 3
+--- !u!114 &51853096343319210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367089369166306368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64c3fe7986060f458fee3f5a80c9339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverCtrlObj: {fileID: 0}
   EnemyDamage: 1
-  hurtMoveForce: 2
+  hurtMoveForce: 6
 --- !u!114 &4480906942669248583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47409523eb262e489a62ef2f0b5f20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: {fileID: 504285788}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackRange: 1.27
+  damageAmount: 35
 --- !u!114 &539775279
 MonoBehaviour:
   m_ObjectHideFlags: 0
