@@ -58,7 +58,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5.486014
   m_Depth: -1
   m_CullingMask:
@@ -92,11 +92,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6471992599892978983}
+  - component: {fileID: 2522612810118977687}
+  - component: {fileID: 4480906942669248583}
+  - component: {fileID: 539775279}
   - component: {fileID: 5734686533263631938}
   - component: {fileID: 5605891211034239359}
   - component: {fileID: 703021745754260161}
   - component: {fileID: 4426174538208974145}
-  - component: {fileID: 2522612810118977687}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -120,6 +122,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2522612810118977687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367089369166306368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f5a28054f3fc1488c880d42f099b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheckObject: {fileID: 6471992598800835871}
+  scoreControllerObject: {fileID: 0}
+  gameOverCtrlObj: {fileID: 0}
+  fallDeathObject: {fileID: 0}
+  enemy1ControllerObj: {fileID: 0}
+  speedForce: 7
+  jumpForce: 3000
+  health: 3
+  EnemyDamage: 1
+  hurtMoveForce: 2
+--- !u!114 &4480906942669248583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367089369166306368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47409523eb262e489a62ef2f0b5f20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &539775279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367089369166306368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6099715657473444a7ff5e5512397d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfHearts: 3
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300010, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
 --- !u!212 &5734686533263631938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -159,9 +213,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1591550663
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c4d7d6470acd7bf45971042161c6e018, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6509434, g: 0.604272, b: 0.604272, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -227,22 +281,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03165114, y: 1.0068811}
   m_Size: {x: 0.43418646, y: 2.0923598}
   m_Direction: 0
---- !u!114 &2522612810118977687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3367089369166306368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f5a28054f3fc1488c880d42f099b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5605891211034239359}
-  groundCheckObject: {fileID: 6471992598800835871}
-  speedForce: 6
-  jumpForce: 3000
 --- !u!1 &6471992598800835870
 GameObject:
   m_ObjectHideFlags: 0

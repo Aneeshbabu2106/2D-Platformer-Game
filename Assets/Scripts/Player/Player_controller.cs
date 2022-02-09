@@ -58,7 +58,7 @@ public class Player_controller : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         isCrouching = Input.GetKey(KeyCode.LeftControl);
-        isStaffAttacking = Input.GetKey(KeyCode.E);
+        //isStaffAttacking = Input.GetKey(KeyCode.E);
         isShooting = Input.GetKey(KeyCode.Space);
         isPushing = Input.GetKey(KeyCode.Tab);
     }
@@ -102,7 +102,7 @@ public class Player_controller : MonoBehaviour
         animator.SetFloat("verticalSpeed",playerRigidBody.velocity.y);
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isCrouching",isCrouching);                   //Crouching
-        animator.SetBool("isStaffAttacking",isStaffAttacking);         //staff attacking
+        //animator.SetBool("isStaffAttacking",isStaffAttacking);       //staff attacking
         animator.SetBool("isShooting",isShooting);                     //shooting      
         animator.SetBool("isPushing",isPushing);                       //pushing
         animator.SetBool("isDied",isDead);                             //died

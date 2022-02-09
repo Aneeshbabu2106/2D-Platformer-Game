@@ -1,46 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPetrolling : MonoBehaviour
 {
-    public Transform leftBound;
-    public Transform rightBound;
-    private float xLeftBound;
-    private float xRightBound;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private bool isfacingLeft = true;
-    private void Start() {
-        {
-            xLeftBound = leftBound.position.x;
-            xRightBound = rightBound.position.x;
-        }
-    }
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Collider2D wallColli2D;
+    private Rigidbody2D enemyRB;
+    private bool mustPetrol = true;
+    private bool mustTurn = false;
 
-    private void Update() {
-        Vector3 scale = transform.localScale;
-        Vector3 position = transform.position;
-        if (transform.position.x > xLeftBound && isfacingLeft)          //going left
-        { 
-            position.x -= moveSpeed * Time.deltaTime;
-        }
-        else if (isfacingLeft)                                        //flipping to right
+    private void Start()
+    {
+        enemyRB = GetComponent<Rigidbody2D>();
+    }
+    private void FixedUpdate()
+    {   
+        if (mustPetrol)
         {
-            isfacingLeft = false;
-            scale.x = Mathf.Abs(scale.x);
+            mustTurn = !Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,whatIsGround);
+            Patrol();
             
         }
-        else if (transform.position.x < xRightBound && !isfacingLeft)  //going right
-        {
-            position.x += moveSpeed * Time.deltaTime;
-        }
-        else if (!isfacingLeft)                                       //flipping to left
-        { 
-            isfacingLeft = true;
-            scale.x = -1f *Mathf.Abs(scale.x);
-        }
-        transform.position = position;
-        transform.localScale = scale; 
     }
 
+    private void Patrol()
+    {
+        if(mustTurn || wallColli2D.IsTouchingLayers(whatIsGround))
+        {
+            Flip();
+        }
+        enemyRB.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime,enemyRB.velocity.y);
+        Debug.Log("called");
+        
+    }
+    void Flip()
+    {   
+        mustPetrol = false;
+        transform.localScale = new Vector2(transform.localScale.x * -1,transform.localScale.y); //flip enemy
+        walkSpeed *= -1;                                                                        //flip movement direction
+        mustPetrol = true;                                                                      
+    }
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius);
+        
+    }
 }
