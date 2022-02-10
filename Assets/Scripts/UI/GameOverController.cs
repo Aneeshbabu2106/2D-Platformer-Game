@@ -18,8 +18,7 @@ public class GameOverController : MonoBehaviour
     }
     void RefreshScene()
     {
-        Scene scene=SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void firstScene()
     {

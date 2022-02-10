@@ -10,7 +10,24 @@ public class LoadLevelScene : MonoBehaviour
  
     private void Awake() {
         Button = GetComponent<Button>();
-        Button.onClick.AddListener(LoadLevel);
+        Button.onClick.AddListener(OnClick);
+    }
+    void OnClick()
+    {
+        LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(levelName);
+        switch(levelStatus)
+        {
+            case LevelStatus.Locked:
+                Debug.Log("can't  load");
+                break;
+            case LevelStatus.Unlocked:
+                LoadLevel();
+                break;
+            case LevelStatus.Completed:
+                LoadLevel();
+                break;
+
+        }
     }
     void LoadLevel()
     {
