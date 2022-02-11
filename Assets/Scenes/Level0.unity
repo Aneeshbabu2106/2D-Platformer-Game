@@ -19080,7 +19080,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1716861580, guid: 66ed1a36cad5f834784844f69f64b376, type: 3}
       propertyPath: m_text
-      value: LEVEL 2
+      value: LEVEL 1
       objectReference: {fileID: 0}
     - target: {fileID: 5283788310189948737, guid: 66ed1a36cad5f834784844f69f64b376,
         type: 3}

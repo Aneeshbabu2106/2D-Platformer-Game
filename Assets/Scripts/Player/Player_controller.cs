@@ -10,7 +10,6 @@ public class Player_controller : MonoBehaviour
     public ScoreController scoreControllerObject;
     
     public FallDeath fallDeathObject;
-    public Enemy1Controller enemy1ControllerObj;
 
     private float verticalInput;
     private float horizontalInput;

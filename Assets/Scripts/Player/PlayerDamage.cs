@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ public class PlayerDamage : MonoBehaviour
             isDead = true;
             //remove detection by enemy;
             animator.SetBool("isDied",isDead);
-
+            playerRigidBody.velocity = Vector2.zero;
             GetComponent<Collider2D>().enabled = false;
             playerRigidBody.gravityScale = 0f;
                                      //died

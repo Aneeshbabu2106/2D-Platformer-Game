@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575460307}
   - component: {fileID: 575460308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0062885284, y: -0.012875557}
@@ -158,6 +158,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallColli2D: {fileID: 575460308}
+  isfacingleft: 0
   mustPetrol: 1
 --- !u!114 &6581974113235819838
 MonoBehaviour:
