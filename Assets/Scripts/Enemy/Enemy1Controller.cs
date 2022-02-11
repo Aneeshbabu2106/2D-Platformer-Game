@@ -15,8 +15,7 @@ public class Enemy1Controller : MonoBehaviour
           playerDamageObj = other.gameObject.GetComponent<PlayerDamage>();
           playerDamageObj.HurtCheck(isHurting);
           playerDamageObj.EnemyAttack(transform);
-          
-          
+           
       }
   }
   private void OnCollisionExit2D(Collision2D other) {

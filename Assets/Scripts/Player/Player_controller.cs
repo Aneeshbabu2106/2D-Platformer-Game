@@ -81,7 +81,7 @@ public class Player_controller : MonoBehaviour
         }
         //player vertical movement
         if (verticalInput > 0 && isGrounded && !isPushing && !isStaffAttacking && !isDead){
-            playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Force);
+            playerRigidBody.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
         }
     }
 
