@@ -42,9 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 1
+  - name: background
     uniqueID: 4064275117
     locked: 0
-  - name: 2
+  - name: platfrom
     uniqueID: 1591550663
+    locked: 0
+  - name: forword
+    uniqueID: 2245919809
+    locked: 0
+  - name: fire
+    uniqueID: 1557968771
     locked: 0
