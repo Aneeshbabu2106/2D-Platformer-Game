@@ -25,6 +25,7 @@ public class Player_controller : MonoBehaviour
     private bool isPushing = false;
     private bool isDead = false;
     private bool isHurting = false;
+    public bool onMovingPlatfrom = true;
     
     
     void Awake() {
@@ -51,6 +52,7 @@ public class Player_controller : MonoBehaviour
         //isStaffAttacking = Input.GetKey(KeyCode.E);
         isShooting = Input.GetKey(KeyCode.Space);
         isPushing = Input.GetKey(KeyCode.Tab);
+
     }
 
     void FixedUpdate() {
@@ -94,7 +96,7 @@ public class Player_controller : MonoBehaviour
         animator.SetBool("isCrouching",isCrouching);                   //Crouching
         animator.SetBool("isShooting",isShooting);                     //shooting      
         animator.SetBool("isPushing",isPushing);                       //pushing
-        
+        animator.SetBool("onMovingPlatfrom", onMovingPlatfrom);
         //jumping 
         if (verticalInput > 0 && isGrounded){
             animator.SetBool("isJumping",true);  

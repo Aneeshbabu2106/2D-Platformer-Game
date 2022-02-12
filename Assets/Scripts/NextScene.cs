@@ -9,6 +9,7 @@ public class NextScene : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
+        if(Key ==)
         SceneManager.LoadScene(nextScene);
         LevelManager.Instance.MarkLevelCompleted();                       //loading next scene
     }
