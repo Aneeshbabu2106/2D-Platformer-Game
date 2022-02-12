@@ -4,7 +4,7 @@ using TMPro;
 public class ScoreController : MonoBehaviour
 {
     private TextMeshProUGUI keyText;
-    private int Keys = 0;
+    public int Keys = 0;
     private void Awake() {
         keyText = GetComponent<TextMeshProUGUI>();
     }
