@@ -8,7 +8,7 @@ public class Player_controller : MonoBehaviour
     private CapsuleCollider2D colli2D;
     public GroundCheck groundCheckObject;
     public ScoreController scoreControllerObject;
-    
+    public GameObject dustParticle;
     public FallDeath fallDeathObject;
 
     private float verticalInput;
@@ -26,6 +26,7 @@ public class Player_controller : MonoBehaviour
     private bool isDead = false;
     private bool isHurting = false;
     public bool onMovingPlatfrom = true;
+    private bool spawnDust = true;
     
     
     void Awake() {
@@ -59,6 +60,16 @@ public class Player_controller : MonoBehaviour
         
         PlayerMovements();
         isGrounded = groundCheckObject.isGrounded;
+        if(isGrounded)
+        {
+            if(spawnDust)
+            {
+                Instantiate(dustParticle,groundCheckObject.transform.position,Quaternion.identity);
+                spawnDust = false;
+            }
+        }else{
+            spawnDust = true;
+        }
         
     }
     
